@@ -1,26 +1,187 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Hanken+Grotesk:wght@400;600&display=swap');
 
+/* ===== Prosperidade Aurora — Design Tokens ===== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Surfaces */
+  --surface: #0b1326;
+  --surface-dim: #0b1326;
+  --surface-bright: #31394e;
+  --surface-container-lowest: #060d20;
+  --surface-container-low: #131b2e;
+  --surface-container: #171f33;
+  --surface-container-high: #222a3e;
+  --surface-container-highest: #2d3449;
+
+  /* On-surface */
+  --on-surface: #dbe2fd;
+  --on-surface-variant: #cbc3d7;
+
+  /* Outline */
+  --outline: #948f9a;
+  --outline-variant: #49454f;
+
+  /* Primary — Lavanda */
+  --primary: #e9ddff;
+  --on-primary: #37265e;
+  --primary-container: #d0bcff;
+  --on-primary-container: #594983;
+  --inverse-primary: #665590;
+  --primary-fixed: #e9ddff;
+  --primary-fixed-dim: #d0bcff;
+
+  /* Secondary — Roxo Suave */
+  --secondary: #dbb8ff;
+  --on-secondary: #3f225e;
+  --secondary-container: #563976;
+  --on-secondary-container: #c9a7ed;
+
+  /* Tertiary — Verde Esmeralda */
+  --tertiary: #6ffbbe;
+  --on-tertiary: #003824;
+  --tertiary-container: #4edea3;
+  --on-tertiary-container: #005f40;
+
+  /* Error — Coral */
+  --error: #ffb4ab;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --on-error-container: #ffdad6;
+
+  /* Background */
+  --background: #0b1326;
+  --on-background: #dbe2fd;
+  --surface-variant: #2d3449;
+
+  /* Special */
+  --surface-glass: rgba(45, 52, 73, 0.4);
+  --aurora-purple: rgba(160, 120, 255, 0.15);
+  --aurora-green: rgba(111, 251, 190, 0.1);
 }
 
 @theme inline {
+  /* Colors */
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-inverse-primary: var(--inverse-primary);
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-error-container: var(--error-container);
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-on-background: var(--on-background);
+  --color-surface-variant: var(--surface-variant);
+
+  /* Typography */
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Hanken Grotesk', sans-serif;
+  --font-sans: 'Hanken Grotesk', sans-serif;
+
+  /* Spacing */
+  --spacing-container: 24px;
+  --spacing-gutter: 16px;
+  --spacing-card-gap: 20px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ===== Base ===== */
+html {
+  background: var(--background);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--on-surface);
+  font-family: 'Hanken Grotesk', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Glass Card ===== */
+.glass-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(208, 188, 255, 0.12);
+  border-top-color: rgba(208, 188, 255, 0.2);
+  border-left-color: rgba(208, 188, 255, 0.15);
+}
+
+/* ===== Neon Text Glow ===== */
+.neon-text {
+  text-shadow: 0 0 20px rgba(208, 188, 255, 0.5), 0 0 40px rgba(208, 188, 255, 0.2);
+}
+
+.neon-green {
+  text-shadow: 0 0 20px rgba(111, 251, 190, 0.5), 0 0 40px rgba(111, 251, 190, 0.2);
+}
+
+/* ===== Aurora Background Blurs ===== */
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.aurora-bg::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: var(--aurora-purple);
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+
+.aurora-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: var(--aurora-purple);
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-container-low);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+  border-radius: 2px;
 }
