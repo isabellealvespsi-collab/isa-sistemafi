@@ -101,8 +101,8 @@ export default function EntradasPage() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
 
-          {/* 3 cards de métrica — mesmo padrão da Visão Geral */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr 1fr', gap: 14 }}>
+          {/* 4 cards na mesma linha: Total + Isa + Fe + BarChart */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1.4fr', gap: 14 }}>
 
             {/* Total */}
             <Card glowRgb="74,222,128" glowAt="top right" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -178,21 +178,17 @@ export default function EntradasPage() {
                 })}
               </div>
             </Card>
-          </div>
 
-          {/* BarChart Crescimento Mensal */}
-          <Card glowRgb="120,70,220" glowAt="top right">
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 4 }}>
-              <div>
-                <p style={lbl}>Crescimento Mensal</p>
-                <p style={{ fontSize: 22, fontWeight: 700, color: '#fff', margin: '0 0 4px', letterSpacing: '-0.02em' }}>{fmt(total)}</p>
-                <span style={pill('#4ADE80', 'rgba(74,222,128,0.12)')}>▲ +12.4% vs anterior</span>
+            {/* BarChart — 4º card na mesma linha */}
+            <Card glowRgb="120,70,220" glowAt="top right" style={{ display: 'flex', flexDirection: 'column' }}>
+              <p style={lbl}>Crescimento Mensal</p>
+              <p style={{ fontSize: 18, fontWeight: 700, color: '#fff', margin: '0 0 2px', letterSpacing: '-0.02em' }}>{fmt(total)}</p>
+              <span style={{ ...pill('#4ADE80', 'rgba(74,222,128,0.12)'), marginBottom: 10, alignSelf: 'flex-start' }}>▲ +12.4%</span>
+              <div style={{ flex: 1 }}>
+                <BarChart />
               </div>
-            </div>
-            <div style={{ marginTop: 16 }}>
-              <BarChart />
-            </div>
-          </Card>
+            </Card>
+          </div>
 
           {/* Tabela — full width */}
           <Card glowRgb="74,222,128" glowAt="top left" style={{ display: 'flex', flexDirection: 'column', padding: 0 }}>
