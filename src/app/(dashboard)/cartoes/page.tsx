@@ -168,7 +168,8 @@ export default function CartoesPage() {
             {cartoes.map(c => {
               const pct = Math.round(c.fatura / c.limite * 100)
               return (
-                <div key={c.nome} className="card-bank-notch" style={{
+                <div key={c.nome} style={{
+                  clipPath: 'polygon(0 0, calc(50% - 20px) 0, calc(50% - 10px) 10px, calc(50% + 10px) 10px, calc(50% + 20px) 0, 100% 0, 100% 100%, 0 100%)',
                   borderRadius: 12, padding: '14px 14px 12px',
                   background: `radial-gradient(ellipse 90% 60% at top center, rgba(${c.rgb},0.3) 0%, #111118 70%)`,
                   border: `1px solid rgba(${c.rgb},0.3)`,

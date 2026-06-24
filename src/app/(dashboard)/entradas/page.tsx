@@ -102,10 +102,10 @@ export default function EntradasPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
 
           {/* 4 cards na mesma linha: Total + Isa + Fe + BarChart */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1.4fr', gap: 14 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1.4fr', gap: 14, alignItems: 'start' }}>
 
             {/* Total */}
-            <Card glowRgb="74,222,128" glowAt="top right" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <Card glowRgb="74,222,128" glowAt="top right" style={{ display: 'flex', flexDirection: 'column' }}>
               <p style={lbl}>Total de Entradas · Jun</p>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
                 <span style={{ fontSize: 26, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>{fmt(total)}</span>
