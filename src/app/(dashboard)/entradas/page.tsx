@@ -97,11 +97,9 @@ export default function EntradasPage() {
         </div>
       </div>
 
-      {/* ── Grid principal ── */}
-      <div style={{ minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 300px', gap: 14 }}>
-
-        {/* Coluna esquerda */}
-        <div style={{ display: 'grid', gridTemplateRows: 'auto 1fr', gap: 14, minHeight: 0 }}>
+      {/* ── Conteúdo principal em coluna única ── */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
 
           {/* 3 cards de métrica — mesmo padrão da Visão Geral */}
           <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr 1fr', gap: 14 }}>
@@ -182,7 +180,21 @@ export default function EntradasPage() {
             </Card>
           </div>
 
-          {/* Tabela com tabs — que a usuária gostou */}
+          {/* BarChart Crescimento Mensal */}
+          <Card glowRgb="120,70,220" glowAt="top right">
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 4 }}>
+              <div>
+                <p style={lbl}>Crescimento Mensal</p>
+                <p style={{ fontSize: 22, fontWeight: 700, color: '#fff', margin: '0 0 4px', letterSpacing: '-0.02em' }}>{fmt(total)}</p>
+                <span style={pill('#4ADE80', 'rgba(74,222,128,0.12)')}>▲ +12.4% vs anterior</span>
+              </div>
+            </div>
+            <div style={{ marginTop: 16 }}>
+              <BarChart />
+            </div>
+          </Card>
+
+          {/* Tabela — full width */}
           <Card glowRgb="74,222,128" glowAt="top left" style={{ display: 'flex', flexDirection: 'column', padding: 0 }}>
 
             {/* Header + Tabs */}
@@ -243,45 +255,6 @@ export default function EntradasPage() {
                 )
               })}
             </div>
-          </Card>
-        </div>
-
-        {/* Coluna direita — só Fontes de Receita (BarChart era redundante com dashboard) */}
-        <div style={{ minHeight: 0 }}>
-          <Card glowRgb="74,222,128" glowAt="top left" style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexShrink: 0 }}>
-              <h3 style={{ fontSize: 13, fontWeight: 600, color: '#fff', margin: 0 }}>Fontes de Receita</h3>
-              <span style={{ fontSize: 9, color: '#55556A' }}>Jun 2026</span>
-            </div>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-              {fontes.map(({ label, cor }) => {
-                const val = historico.filter(i => i.tipo === label).reduce((s, i) => s + i.valor, 0)
-                if (!val) return null
-                const pct = Math.round(val / total * 100)
-                return (
-                  <div key={label}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                        {/* Dot pequeno, sem glow */}
-                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: cor, opacity: 0.5 }} />
-                        <span style={{ fontSize: 11, color: '#5A5A72' }}>{label}</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        {/* Valor em branco, destaque principal */}
-                        <span style={{ fontSize: 12, fontWeight: 600, color: '#CCCCDD' }}>{fmt(val)}</span>
-                        <span style={{ fontSize: 9, color: '#3A3A50', width: 26, textAlign: 'right' }}>{pct}%</span>
-                      </div>
-                    </div>
-                    <div style={{ height: 3, background: 'rgba(255,255,255,0.04)', borderRadius: 99 }}>
-                      <div style={{ height: '100%', width: `${pct}%`, borderRadius: 99, background: cor, opacity: 0.55 }} />
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-            <button style={{ marginTop: 10, background: 'none', border: 'none', color: '#4ADE80', fontSize: 10, cursor: 'pointer', padding: 0, fontFamily: 'Inter, sans-serif', flexShrink: 0 }}>
-              Ver todas as entradas →
-            </button>
           </Card>
         </div>
       </div>
