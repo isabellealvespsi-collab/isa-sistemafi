@@ -184,7 +184,7 @@ export default function EntradasPage() {
               <p style={lbl}>Crescimento Mensal</p>
               <p style={{ fontSize: 18, fontWeight: 700, color: '#fff', margin: '0 0 2px', letterSpacing: '-0.02em' }}>{fmt(total)}</p>
               <span style={{ ...pill('#4ADE80', 'rgba(74,222,128,0.12)'), marginBottom: 10, alignSelf: 'flex-start' }}>▲ +12.4%</span>
-              <div style={{ flex: 1 }}>
+              <div style={{ height: 110 }}>
                 <BarChart />
               </div>
             </Card>
