@@ -66,7 +66,7 @@ export default function AjustesPage() {
   }
 
   return (
-    <div style={{ fontFamily: 'Inter, sans-serif', height: '100%', display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div style={{ fontFamily: 'Inter, sans-serif', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
       {/* Header */}
       <div style={{ flexShrink: 0 }}>
@@ -74,7 +74,7 @@ export default function AjustesPage() {
         <p style={{ fontSize: 11, color: '#55556A', margin: '2px 0 0' }}>Personalize o sistema do casal</p>
       </div>
 
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '200px 1fr', gap: 14 }}>
+      <div style={{ minHeight: 0, display: 'grid', gridTemplateColumns: '200px 1fr', gap: 14 }}>
 
         {/* Menu lateral de tabs */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>

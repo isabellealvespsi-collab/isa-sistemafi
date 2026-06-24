@@ -4,7 +4,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: '#0A0A0F' }}>
       <Sidebar />
-      <main style={{ marginLeft: 224, flex: 1, padding: '20px 24px', height: '100vh', fontFamily: 'Inter, sans-serif', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      <main style={{ marginLeft: 224, flex: 1, padding: '20px 24px 40px', fontFamily: 'Inter, sans-serif' }}>
         {children}
       </main>
     </div>

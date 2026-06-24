@@ -62,7 +62,7 @@ export default function DashboardPage() {
   const totalEntrada = resumo.totalEntradas || 8240
   const totalSaida   = resumo.totalSaidas  || 3120.50
   return (
-    <div style={{ fontFamily: 'Inter, sans-serif', height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ fontFamily: 'Inter, sans-serif', display: 'flex', flexDirection: 'column' }}>
 
       {/* ── Header ── */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexShrink: 0 }}>
@@ -87,7 +87,7 @@ export default function DashboardPage() {
 
       {/* ── Corpo: grid 2 colunas, flex:1 para ocupar o restante ── */}
       <div style={{
-        flex: 1, minHeight: 0,
+        minHeight: 0,
         display: 'grid',
         gridTemplateColumns: '1fr 310px',
         gridTemplateRows: '1fr',

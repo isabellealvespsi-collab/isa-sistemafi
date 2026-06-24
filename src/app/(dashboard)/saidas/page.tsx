@@ -162,7 +162,7 @@ export default function SaidasPage() {
   const gastoReal = dbSaidas.reduce((s: number, i: any) => s + Number(i.valor), 0)
   const totalGastoFinal = gastoReal > 0 ? gastoReal : totalGasto
   return (
-    <div style={{ fontFamily: 'Inter, sans-serif', height: '100%', display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div style={{ fontFamily: 'Inter, sans-serif', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
@@ -180,7 +180,7 @@ export default function SaidasPage() {
         </div>
       </div>
 
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 260px', gap: 14 }}>
+      <div style={{ minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 260px', gap: 14 }}>
 
         {/* Coluna esquerda */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minHeight: 0 }}>
@@ -232,7 +232,7 @@ export default function SaidasPage() {
           </div>
 
           {/* Grid de categorias */}
-          <div style={{ flex: 1, minHeight: 0, overflowY: 'auto' }}>
+          <div style={{ minHeight: 0, overflowY: 'auto' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
               {categorias.map(cat => <CatCard key={cat.nome} cat={cat} />)}
             </div>

@@ -48,7 +48,7 @@ export default function MetasPage() {
     ? dbMetas.map((m: any) => ({ ...m, nome: m.nome, meta: Number(m.valor_meta), atual: Number(m.valor_atual), prazo: m.prazo?.slice(0,7), cor: m.cor || '#D966FF', rgb: '217,102,255', titular: m.titular, Icon: Heart }))
     : metas
   return (
-    <div style={{ fontFamily: 'Inter, sans-serif', height: '100%', display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div style={{ fontFamily: 'Inter, sans-serif', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
@@ -66,7 +66,7 @@ export default function MetasPage() {
         </div>
       </div>
 
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 280px', gap: 14 }}>
+      <div style={{ minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 280px', gap: 14 }}>
 
         {/* Coluna esquerda */}
         <div style={{ display: 'grid', gridTemplateRows: 'auto 1fr', gap: 14, minHeight: 0 }}>

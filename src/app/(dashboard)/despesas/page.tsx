@@ -57,7 +57,7 @@ export default function DespesasPage() {
     despesas
 
   return (
-    <div style={{ fontFamily: 'Inter, sans-serif', height: '100%', display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div style={{ fontFamily: 'Inter, sans-serif', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
@@ -76,7 +76,7 @@ export default function DespesasPage() {
       </div>
 
       {/* Grid principal */}
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 280px', gap: 14 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
 
         {/* Coluna esquerda */}
         <div style={{ display: 'grid', gridTemplateRows: 'auto 1fr', gap: 14, minHeight: 0 }}>
@@ -212,50 +212,6 @@ export default function DespesasPage() {
           </Card>
         </div>
 
-        {/* Coluna direita — idêntico ao Atenção às Contas da Visão Geral */}
-        <Card glowRgb="255,77,109" glowAt="top left" style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ flexShrink: 0, marginBottom: 10 }}>
-            <h3 style={{ fontSize: 13, fontWeight: 600, color: '#fff', margin: '0 0 2px' }}>Atenção às Contas!</h3>
-            <p style={{ fontSize: 10, color: '#55556A', margin: 0 }}>Mantenha os pagamentos em dia.</p>
-          </div>
-
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8, overflowY: 'auto', minHeight: 0 }}>
-            {pendentes.map(d => {
-              const rgb = d.dia <= 12 ? '255,77,109' : '245,158,11'
-              const sC  = d.dia <= 12 ? '#FF4D6D'    : '#F59E0B'
-              const sub = d.dia <= 12 ? 'Vence hoje / vencido' : `Vence dia ${d.dia}`
-              return (
-                <div key={d.desc} style={{
-                  background: `rgba(${rgb},0.05)`,
-                  border: `1px solid rgba(${rgb},0.12)`,
-                  borderLeft: `3px solid rgba(${rgb},1)`,
-                  borderRadius: 9, padding: '9px 12px',
-                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-                    <div style={{ width: 28, height: 28, borderRadius: 7, background: `rgba(${rgb},0.12)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <d.Icon size={13} color={sC} />
-                    </div>
-                    <div>
-                      <p style={{ fontSize: 12, fontWeight: 500, color: '#fff', margin: 0 }}>{d.desc}</p>
-                      <p style={{ fontSize: 9, color: sC, margin: '2px 0 0' }}>{sub} · {d.pessoa}</p>
-                    </div>
-                  </div>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>{fmt(d.valor)}</span>
-                </div>
-              )
-            })}
-          </div>
-
-          <button style={{
-            width: '100%', padding: 10, marginTop: 10, flexShrink: 0,
-            background: 'linear-gradient(90deg,#C44DFF,#9B59FF)',
-            border: 'none', borderRadius: 10,
-            color: '#fff', fontSize: 12, fontWeight: 600,
-            cursor: 'pointer', fontFamily: 'Inter, sans-serif',
-            boxShadow: '0 4px 16px rgba(196,77,255,0.3)',
-          }}>Marcar como Pago</button>
-        </Card>
       </div>
     </div>
   )

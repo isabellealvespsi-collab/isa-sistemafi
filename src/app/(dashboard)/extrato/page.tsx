@@ -146,7 +146,7 @@ export default function ExtratoPage() {
     .filter(l => filtroCateg === 'Todas' || l.categoria === filtroCateg)
 
   return (
-    <div style={{ fontFamily: 'Inter, sans-serif', height: '100%', display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div style={{ fontFamily: 'Inter, sans-serif', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
       {modalAberto && <NovoModal onSave={adicionarSaida} onClose={() => setModalAberto(false)} />}
 
@@ -201,7 +201,7 @@ export default function ExtratoPage() {
       </div>
 
       {/* Tabela */}
-      <div style={{ flex: 1, minHeight: 0, background: '#0A0A0F', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+      <div style={{ minHeight: 0, background: '#0A0A0F', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr 140px 70px 110px 80px', padding: '11px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', flexShrink: 0 }}>
           {['Data', 'Descrição', 'Categoria', 'De quem', 'Valor', 'Conta'].map(col => (
             <span key={col} style={{ fontSize: 9, fontWeight: 600, color: '#55556A', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{col}</span>

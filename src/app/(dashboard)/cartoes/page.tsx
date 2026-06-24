@@ -48,7 +48,7 @@ export default function CartoesPage() {
   const filtrado = tab === 'Todos' ? lancamentos : lancamentos.filter(l => l.cartao === tab)
 
   return (
-    <div style={{ fontFamily: 'Inter, sans-serif', height: '100%', display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div style={{ fontFamily: 'Inter, sans-serif', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
@@ -62,7 +62,7 @@ export default function CartoesPage() {
       </div>
 
       {/* Grid: esquerda (métricas + tabela) | direita (cards físicos) */}
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 300px', gap: 14 }}>
+      <div style={{ minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 300px', gap: 14 }}>
 
         {/* ── Coluna esquerda ── */}
         <div style={{ display: 'grid', gridTemplateRows: 'auto 1fr', gap: 14, minHeight: 0 }}>

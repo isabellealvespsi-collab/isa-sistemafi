@@ -79,7 +79,7 @@ export default function EntradasPage() {
   const filtrado = tab === 'Todas' ? fonte : fonte.filter((i: any) => i.tipo === tab)
 
   return (
-    <div style={{ fontFamily: 'Inter, sans-serif', height: '100%', display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div style={{ fontFamily: 'Inter, sans-serif', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
       {/* ── Header ── */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
@@ -98,7 +98,7 @@ export default function EntradasPage() {
       </div>
 
       {/* ── Grid principal ── */}
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 300px', gap: 14 }}>
+      <div style={{ minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 300px', gap: 14 }}>
 
         {/* Coluna esquerda */}
         <div style={{ display: 'grid', gridTemplateRows: 'auto 1fr', gap: 14, minHeight: 0 }}>
@@ -246,22 +246,8 @@ export default function EntradasPage() {
           </Card>
         </div>
 
-        {/* Coluna direita — mesmo padrão da Visão Geral */}
-        <div style={{ display: 'grid', gridTemplateRows: '1fr 1fr', gap: 14, minHeight: 0 }}>
-
-          {/* Gráfico mensal — reutiliza o BarChart existente */}
-          <Card glowRgb="120,70,220" glowAt="top right" style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ flexShrink: 0 }}>
-              <p style={lbl}>Crescimento Mensal</p>
-              <p style={{ fontSize: 20, fontWeight: 700, color: '#fff', margin: '0 0 4px', letterSpacing: '-0.02em' }}>{fmt(total)}</p>
-              <span style={pill('#4ADE80', 'rgba(74,222,128,0.12)')}>▲ +12.4% vs anterior</span>
-            </div>
-            <div style={{ flex: 1, minHeight: 0, marginTop: 12 }}>
-              <BarChart />
-            </div>
-          </Card>
-
-          {/* Fontes de Receita — igual ao card Categorias da Visão Geral */}
+        {/* Coluna direita — só Fontes de Receita (BarChart era redundante com dashboard) */}
+        <div style={{ minHeight: 0 }}>
           <Card glowRgb="74,222,128" glowAt="top left" style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexShrink: 0 }}>
               <h3 style={{ fontSize: 13, fontWeight: 600, color: '#fff', margin: 0 }}>Fontes de Receita</h3>

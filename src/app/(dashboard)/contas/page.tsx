@@ -68,7 +68,7 @@ export default function ContasPage() {
   const filtrado = tab === 'Todas' ? movimentacoes : movimentacoes.filter(m => m.conta === tab)
 
   return (
-    <div style={{ fontFamily: 'Inter, sans-serif', height: '100%', display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div style={{ fontFamily: 'Inter, sans-serif', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
@@ -87,7 +87,7 @@ export default function ContasPage() {
       </div>
 
       {/* Grid principal */}
-      <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: '1fr 300px', gap: 14 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
 
         {/* Coluna esquerda */}
         <div style={{ display: 'grid', gridTemplateRows: 'auto auto 1fr', gap: 14, minHeight: 0 }}>
@@ -251,71 +251,6 @@ export default function ContasPage() {
           </Card>
         </div>
 
-        {/* Coluna direita */}
-        <div style={{ display: 'grid', gridTemplateRows: '1fr 1fr', gap: 14, minHeight: 0 }}>
-
-          {/* Distribuição por banco */}
-          <Card glowRgb="160,100,255" glowAt="top right" style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ flexShrink: 0, marginBottom: 14 }}>
-              <h3 style={{ fontSize: 13, fontWeight: 600, color: '#fff', margin: '0 0 2px' }}>Distribuição por Banco</h3>
-              <p style={{ fontSize: 10, color: '#55556A', margin: 0 }}>% do patrimônio total</p>
-            </div>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-              {contas.map(c => {
-                const pct = Math.round(c.saldo / totalSaldo * 100)
-                return (
-                  <div key={c.nome}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                        <div style={{ width: 7, height: 7, borderRadius: '50%', background: c.cor, boxShadow: `0 0 5px ${c.cor}` }} />
-                        <span style={{ fontSize: 11, color: '#CCCCDD' }}>{c.nome}</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <span style={{ fontSize: 12, fontWeight: 600, color: '#fff' }}>{fmt(c.saldo)}</span>
-                        <span style={{ fontSize: 9, color: '#55556A', width: 26, textAlign: 'right' }}>{pct}%</span>
-                      </div>
-                    </div>
-                    <div style={{ height: 4, background: 'rgba(255,255,255,0.05)', borderRadius: 99 }}>
-                      <div style={{ height: '100%', width: `${pct}%`, borderRadius: 99, background: c.cor, opacity: 0.6, boxShadow: `0 0 6px ${c.cor}60` }} />
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </Card>
-
-          {/* Resumo rápido */}
-          <Card glowRgb="74,222,128" glowAt="top left" style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ flexShrink: 0, marginBottom: 12 }}>
-              <h3 style={{ fontSize: 13, fontWeight: 600, color: '#fff', margin: '0 0 2px' }}>Resumo do Mês</h3>
-              <p style={{ fontSize: 10, color: '#55556A', margin: 0 }}>Junho 2026</p>
-            </div>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-              {[
-                { l: 'Total em Conta',   v: fmt(totalSaldo),             c: '#fff'     },
-                { l: 'Entradas do Mês',  v: '+ ' + fmt(totalEntrada),    c: '#4ADE80'  },
-                { l: 'Saídas do Mês',    v: '- ' + fmt(totalSaida),      c: '#FF4D6D'  },
-                { l: 'Saldo Líquido',    v: '+ ' + fmt(totalEntrada - totalSaida), c: '#4ADE80' },
-              ].map(({ l, v, c }) => (
-                <div key={l} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                  <span style={{ fontSize: 11, color: '#8888AA' }}>{l}</span>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: c }}>{v}</span>
-                </div>
-              ))}
-            </div>
-            <button style={{
-              width: '100%', padding: 10, marginTop: 12, flexShrink: 0,
-              background: 'linear-gradient(90deg,#C44DFF,#9B59FF)',
-              border: 'none', borderRadius: 10,
-              color: '#fff', fontSize: 12, fontWeight: 600,
-              cursor: 'pointer', fontFamily: 'Inter, sans-serif',
-              boxShadow: '0 4px 16px rgba(196,77,255,0.3)',
-            }}>
-              <TrendingUp size={13} style={{ marginRight: 6, verticalAlign: 'middle' }} />
-              Ver Extrato Completo
-            </button>
-          </Card>
-        </div>
       </div>
     </div>
   )
